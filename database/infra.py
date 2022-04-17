@@ -30,6 +30,9 @@ class Database(Construct):
             removal_policy=RemovalPolicy.DESTROY,
             time_to_live_attribute="ttl",
             stream=aws_dynamodb.StreamViewType.NEW_AND_OLD_IMAGES,
+            # 以下ケチるための設定
+            write_capacity=1,
+            read_capacity=1,
         )
         self._table = table
 
